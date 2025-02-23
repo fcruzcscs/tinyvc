@@ -1,0 +1,14 @@
+[Unit]
+Description=MUNGE Authentication Service
+After=network.target
+
+[Service]
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin LD_LIBRARY_PATH=/usr/local/lib"
+ExecStart=/usr/local/sbin/munged --key-file=/etc/munge/munge.key
+User=munge
+Group=munge
+RuntimeDirectory=munge
+PIDFile=/usr/local/var/run/munge/munged.pid
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,6 @@
+.vagrant
+*certs/
+*.csr
+*.pem
+*.key
+*.srl
