@@ -4,6 +4,7 @@
 CERT_DIR="certs"
 mkdir -p $CERT_DIR
 cd $CERT_DIR
+pwd
 
 # Generate a Certificate Authority (CA)
 openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 \
@@ -41,5 +42,5 @@ openssl x509 -req -in nomad-server.csr -CA nomad-ca.pem -CAkey nomad-ca.key -CAc
 
 # Output the generated files
 echo "Certificates generated successfully in $CERT_DIR"
-ls -l $CERT_DIR
+ls -l ../$CERT_DIR
 
