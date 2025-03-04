@@ -2,6 +2,7 @@
 
 # Set working directory for certificates
 CERT_DIR="certs"
+cd ~
 mkdir -p $CERT_DIR
 cd $CERT_DIR
 pwd

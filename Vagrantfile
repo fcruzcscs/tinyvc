@@ -105,7 +105,6 @@ config.vm.provision "shell", inline: <<-SHELL
     sudo cp /vagrant/cgroup.conf /usr/local/etc/cgroup.conf
     sudo mkdir -p /var/spool/slurmctld /var/spool/slurmd
 
-
     # Configure SLURM systemd services
     sudo cp etc/slurmctld.service /etc/systemd/system/
     sudo cp etc/slurmd.service /etc/systemd/system/
