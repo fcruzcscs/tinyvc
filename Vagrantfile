@@ -212,20 +212,21 @@ config.vm.provision "shell", inline: <<-SHELL
     sudo zypper install ./fakerootuidsync-0.0.3-3.aarch64.rpm
 
     # Copy vCluster spec
-    sudo mkdir -p ~/vcluster
-    sudo cp /vagrant/vcluster/* ~/vcluster
+    sudo mkdir -p /home/vagrant/vcluster
+    sudo cp /vagrant/vcluster/* /home/vagrant/vcluster
     
     # Install Go test framework Ginkgo
+    cd ~
     export GO_VERSION=1.24.0
     wget https://go.dev/dl/go${GO_VERSION}.linux-arm64.tar.gz
     sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go${GO_VERSION}.linux-arm64.tar.gz
-    echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
+    echo 'export PATH=$PATH:/usr/local/go/bin' >> /home/vagrant/.bashrc
     export PATH=$PATH:/usr/local/go/bin
-    go get -u github.com/onsi/gomega
-    go install github.com/onsi/ginkgo/v2
 
     # install podman-nfs dependencies
-    sudo zypper --non-interactive install -y device-mapper-devel btrfsprogs
+    sudo zypper --non-interactive refresh
+    sudo zypper --non-interactive update -y
+    sudo zypper --non-interactive install -y device-mapper-devel btrfsprogs squashfs
 
   SHELL
 end
