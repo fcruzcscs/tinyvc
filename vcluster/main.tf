@@ -6,8 +6,8 @@ module "vcluster" {
   nomad_lock_token         = var.nomad_secret_id
   packages_os              = "opensuse-15.5"
   # mem limits
-  default_resources_memory = "60"
-  default_resources_memory_max = "300"
+  default_resources_memory = "400"
+  default_resources_memory_max = "800"
 }
 
 module "podman" {

@@ -209,11 +209,12 @@ config.vm.provision "shell", inline: <<-SHELL
     sudo mkdir -p ~/rpms
     sudo cp /vagrant/rpms/fakerootuidsync-0.0.3-3.aarch64.rpm ~/rpms/fakerootuidsync-0.0.3-3.aarch64.rpm
     cd ~/rpms
-    sudo zypper install ./fakerootuidsync-0.0.3-3.aarch64.rpm
+    sudo zypper --non-interactive --no-gpg-checks install -y ./fakerootuidsync-0.0.3-3.aarch64.rpm
 
     # Copy vCluster spec
     sudo mkdir -p /home/vagrant/vcluster
     sudo cp /vagrant/vcluster/* /home/vagrant/vcluster
+    sudo chown -R vagrant:vagrant /home/vagrant/vcluster
     
     # Install Go test framework Ginkgo
     cd ~
