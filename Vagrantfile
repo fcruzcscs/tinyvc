@@ -229,5 +229,14 @@ config.vm.provision "shell", inline: <<-SHELL
     sudo zypper --non-interactive update -y
     sudo zypper --non-interactive install -y device-mapper-devel btrfsprogs squashfs
 
+    # Installing ansible and python update
+    sudo zypper install python311
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.11 1
+    sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
+    python3.11 -m ensurepip --default-pip
+    python3.11 -m pip install --upgrade pip
+    python3.11 -m pip install ansible
+
+
   SHELL
 end
