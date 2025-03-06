@@ -19,7 +19,19 @@ Vagrant.configure("2") do |config|
     ]
   end
 
-config.vm.provision "shell", inline: <<-SHELL
+
+  config.vm.provision "shell", inline: <<-SHELL
+    echo "Updating GRUB to enable cgroups v2..."
+    sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="/GRUB_CMDLINE_LINUX_DEFAULT="systemd.unified_cgroup_hierarchy=1 /' /etc/default/grub
+    sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    echo "GRUB updated. Rebooting to apply changes..."
+  SHELL
+  
+  # We push for a reboot
+  config.vm.provision 'shell', reboot: true
+
+
+  config.vm.provision "shell", inline: <<-SHELL
     # Ensure the 'keep_packages' option is set to 1 in /etc/zypp/zypp.conf
     if grep -q '^keep_packages' /etc/zypp/zypp.conf; then
         sudo sed -i 's/^keep_packages.*/keep_packages = 1/' /etc/zypp/zypp.conf
