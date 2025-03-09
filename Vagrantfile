@@ -239,7 +239,7 @@ Vagrant.configure("2") do |config|
     # install podman-nfs dependencies
     sudo zypper --non-interactive refresh
     sudo zypper --non-interactive update -y
-    sudo zypper --non-interactive install -y device-mapper-devel btrfsprogs squashfs libbtrfs-devel squashfuse
+    sudo zypper --non-interactive install -y device-mapper-devel btrfsprogs squashfs libbtrfs-devel squashfuse inotify-tools
 
     # Installing ansible and python update
     sudo zypper --non-interactive install -y  python311
