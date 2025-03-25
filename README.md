@@ -16,11 +16,6 @@ Before running this setup, ensure you have the following installed on your host 
 
 1. **Clone the repository:**
 
-   ```sh
-   git clone https://github.com/your-repo-name.git
-   cd your-repo-name
-   ```
-
 2. **Start the Vagrant machine:**
 
    ```sh
