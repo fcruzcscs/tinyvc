@@ -14,7 +14,11 @@ Before running this setup, ensure you have the following installed on your host 
 
 ## Setup Instructions
 
-1. **Clone the repository:**
+1. **Clone the repository**
+
+   ```sh
+   git clone ...
+   ```
 
 2. **Start the Vagrant machine:**
 
